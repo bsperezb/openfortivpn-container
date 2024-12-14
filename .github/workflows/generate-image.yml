@@ -1,0 +1,30 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Construye la imagen en cada push a la rama principal
+
+jobs:
+  build-and-push:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout del código
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Log in to GitHub Packages
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    # 3. Build the Docker image
+    - name: Build the Docker image
+      run: |
+        docker build -t ghcr.io/${{ github.repository_owner }}/<IMAGE_NAME>:latest .
+
+    # 4. Push the Docker image to GitHub Packages
+    - name: Push the Docker image
+      run: |
+        docker push ghcr.io/${{ github.repository_owner }}/openfortivpn:latest
