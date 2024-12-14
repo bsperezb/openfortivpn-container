@@ -22,7 +22,7 @@ jobs:
     # 3. Build the Docker image
     - name: Build the Docker image
       run: |
-        docker build -t ghcr.io/${{ github.repository_owner }}/<IMAGE_NAME>:latest .
+        docker build -t ghcr.io/${{ github.repository_owner }}/openfortivpn:latest .
 
     # 4. Push the Docker image to GitHub Packages
     - name: Push the Docker image

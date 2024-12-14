@@ -22,5 +22,4 @@ services:
     restart: always
     mem_limit: 512m
     cpus: "1.0"
-    #command: ["/usr/local/bin/start_vpn.sh"]
 
