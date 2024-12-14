@@ -1,0 +1,26 @@
+
+services:
+  vpn:
+    container_name: vpntest
+    hostname: vpn
+    build:
+      context: .
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - "/dev/ppp:/dev/ppp"
+    tty: true
+    privileged: true
+    environment:
+      - VPN_HOST=${VPN_HOST}
+      - VPN_USER=${VPN_USER}
+      - VPN_PASSWORD=${VPN_PASSWORD}
+      - VPN_PORT=${VPN_PORT}
+      - VPN_CERT=${VPN_CERT}
+    network_mode: "host"
+    restart: always
+    mem_limit: 512m
+    cpus: "1.0"
+    #command: ["/usr/local/bin/start_vpn.sh"]
+
