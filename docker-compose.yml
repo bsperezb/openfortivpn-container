@@ -18,8 +18,32 @@ services:
       - VPN_PASSWORD=${VPN_PASSWORD}
       - VPN_PORT=${VPN_PORT}
       - VPN_CERT=${VPN_CERT}
+      - VPN_CURL_STRING=${VPN_CURL_STRING}
+      - VPN_CURL_RESPONSE=${VPN_CURL_RESPONSE}
     network_mode: "host"
     restart: always
     mem_limit: 512m
     cpus: "1.0"
 
+# services:
+#   vpn:
+#     container_name: vpntest
+#     hostname: vpn
+#     image: ghcr.io/bsperezb/openfortivpn:latest  # Usar la imagen de GHCR
+#     cap_add:
+#       - NET_ADMIN
+#       - NET_RAW
+#     devices:
+#       - "/dev/ppp:/dev/ppp"
+#     tty: true
+#     privileged: true
+#     environment:
+#       - VPN_HOST=${VPN_HOST}
+#       - VPN_USER=${VPN_USER}
+#       - VPN_PASSWORD=${VPN_PASSWORD}
+#       - VPN_PORT=${VPN_PORT}
+#       - VPN_CERT=${VPN_CERT}
+#     network_mode: "host"
+#     restart: always
+#     mem_limit: 512m
+#     cpus: "1.0"
