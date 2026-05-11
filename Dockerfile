@@ -17,10 +17,12 @@ RUN apt-get install -y --no-install-recommends \
     libssl-dev \
     pkg-config \
     build-essential \
+    cmake \
     autoconf \
     automake \
     libtool \
-    git && \
+    git \
+    vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
